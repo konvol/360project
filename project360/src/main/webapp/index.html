@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Start Page</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+        <script src="js/makeAjax.js"> </script>
+        <link rel="stylesheet" type="text/css" href="css/style.css"/>
+        <script src="js/setSignInDate.js"> </script>
+        <script src="js/contractEnd.js"> </script>
+        <script src="js/getEmployees.js"> </script>
+        <script src="js/getEmployee.js"> </script>
+        <script src="js/addEmployee.js"> </script>
+        <script src="js/editEmployee.js"> </script>
+        <script src="js/showForm.js"> </script>
+        <script src="js/initAll.js"> </script>
+        <script src="js/truncateAll.js"> </script>
+        <script src="js/flush.js"> </script>
+        <script src="js/updateIncomes.js"> </script>
+        <script src="js/currentMonthPayroll.js"> </script>
+        <script src="js/manyMonthsPayroll.js"> </script>
+        <script src="js/tempPromotion.js"> </script>
+        <script src="js/dis_ret.js"> </script>
+        <script src="js/showStatistics.js"> </script>
+        <script src="js/payrollPerType.js"> </script>
+    </head>
+    <body onload='setSignInDate()'>
+        <h1 class="text-primary text-center"><br>Welcome to our Amazing Database</h1>
+
+        <div class="row">
+            <div class="leftCol">
+                <button class="btn btn-primary" onclick="initTables();"> Add Random Employess</button> <br>
+                <button class="btn btn-primary" onclick="truncateAll()">Truncate Tables</button><br>
+                <button class="btn btn-primary" onclick="getEmployees()"> Show employees</button><br>
+                <button class="btn btn-primary" onclick="editEmployee()"> Edit Employee </button><br>
+                <button class="btn btn-primary" onclick="showForm()"> New employee</button><br>
+                <button class="btn btn-primary" onclick="showUpdateIncomes()"> Update Incomes/Bonus</button><br>
+                <button id="currentMonthBtn" class="btn btn-primary" onclick="currentMonthPayroll()"> Set Current Payroll</button><br>
+                <button id="getCurrentMonthBtn" class="btn btn-primary" onclick="getCurrentMonthPayroll()"> Show Current Payroll</button><br>
+                <button id="manyMonthMonthsBtn" class="btn btn-primary" onclick="showManyMonthsPayroll()"> Multiple Payrolls</button><br>
+                <button id="tempPromotion" class="btn btn-primary" onclick="showPromotion()"> Employee Promotion</button><br>
+                <button id="tempPromotion" class="btn btn-primary" onclick="showRetirement()"> Dismissal/Retirement </button><br>
+                <button id="tempPromotion" class="btn btn-primary" onclick="showGetEmployee()"> Show Employee Details </button><br>
+                <button id="statisticsbtn" class="btn btn-primary" onclick="showStatistics()"> Show Statistics</button><br>
+                <button id="payrollPerTypebtn" class="btn btn-primary" onclick="payrollPerType()"> Payroll Per Type</button><br>
+                <div class="vCol"></div>
+            </div>
+
+            <div class="rightCol">
+                <div class="infoBox" id='initAll' style="display:none"></div>
+
+                <div class="infoBox" id='initTables' style="display:none"></div>
+
+                <div id='main' style="display:none"></div>
+
+                <div class="infoBox" id="payRoll" style="display:none"></div>
+
+                <div id="payRollShow" style="display:none"></div>
+
+                <div id="getManyMonthsPayroll" style="display:none"></div>
+
+                <div id="manyMonthsPayroll" style="display:none">
+                    <h3>From</h3>
+                    <label> Year: </label>
+                    <select class="form-control" id="yearFrom" onclick="" required>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                    <label> Month: </label>
+                    <select class="form-control" id="monthFrom" onclick="" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <hr>
+                    <h3>To</h3>
+                    <label> Year: </label>
+                    <select class="form-control" id="yearTo" onclick="" required>
+                        <option value="2019">2019</option>
+                        <option value="2020">2020</option>
+                        <option value="2021">2021</option>
+                        <option value="2022">2022</option>
+                        <option value="2023">2023</option>
+                        <option value="2024">2024</option>
+                    </select>
+                    <label> Month: </label>
+                    <select class="form-control" id="monthTo" onclick="" required>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                        <option value="7">7</option>
+                        <option value="8">8</option>
+                        <option value="9">9</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <br>
+                    <input type="button" id="submit_updates" class="btn btn-primary" value="Initialize Requested Payrolls" onclick='manyMonthsPayroll()'>
+                    <input type="button" id="submit_updates" class="btn btn-primary" value="Show Requested Payrolls" onclick='getManyMonthsPayroll()'>
+                </div>
+
+                <div class="infoBox" id="manyMonths" style="display:none"></div>
+
+                <div id="editEmp" style="display:none;">
+                    <label>Type the ID of the employee you want to edit.</label><br>
+                    <input type="text" id="editID" class="form-control" placeholder="Employee ID" title="Enter Employee ID" onkeyup="getEmployeeFull()"><br>
+                    <br>
+                    <div id="employeeDetails"> </div>
+                </div>
+                <div class="infoBox" id="EditMessage" style="display:none"></div>
+
+                <div id="updateIncomes" style="display:none;">
+                    <div class="form-group">
+                        <label>Income/Bonus to be updated</label><br>
+                        <select class="form-control" id="incomeType" onclick="" required>
+                            <option value="Perm_Admin">Permanent Administrative Basic Income</option>
+                            <option value="Perm_Edu">Permanent Educative Basic Income</option>
+                            <option value="LibraryBonus">Library Bonus</option>
+                            <option value="ResearchBonus">Research Bonus</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>New Value</label><br>
+                        <input type="text" id="updatedIncome" class="form-control" placeholder="New value" title="Enter new value." required>
+                    </div>
+                    <input type="button" id="submit_updates" class="btn btn-primary" value="Submit" onclick='updateIncomes()'>
+                </div>
+
+                <div class="infoBox" id="updateIncomeDetails" style="display:none"> </div>
+
+                <div id="form" style="display:none">
+                    <div class="form-group">
+                        <label>First Name</label><br>
+                        <input type="text" id="firstname" class="form-control" placeholder="First Name" title="Enter Name. If Spanish enter only your first name." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Last Name</label><br>
+                        <input type="text" id="lastname" class="form-control" placeholder="Last Name" title="Enter Last Name. If Spanish enter only your first name." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contract signing(must be at first day of month)</label><br>
+                        <input type="date" id="beg_date" class="form-control" value='' title="choose date of signin" required>
+
+                    </div>
+                    <div class="form-group">
+                        <label>Address</label><br>
+                        <input type="text" id="address" class="form-control" placeholder="Adress" title="Type your address." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Bank Number</label><br>
+                        <input type="text" id="bank_number" class="form-control" placeholder="Bank Number" title="Type your Bank Number." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Bank Name</label><br>
+                        <input type="text" id="bank_name" class="form-control" placeholder="Bank Name" title="Type your bank name." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label><br>
+                        <input type="text" id="phone" class="form-control" placeholder="Phone" title="Type your phone number." required>
+                    </div>
+                    <div class="form-group">
+                        <label>Department</label><br>
+                        <select class="form-control" id="department" onclick="" required>
+                            <option value="CSD">CSD</option>
+                            <option value="Math">Math</option>
+                            <option value="Physics">Physics</option>
+                            <option value="Chemistry">Chemistry</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Married</label><br>
+                        <input type="radio" name="married" id="marriedYes" value="yes" title="Yes"> Yes
+                        <input type="radio" name="married" id="marriedYes" value="no" title="No" checked> No<br>
+                    </div>
+                    <div class="form-group">
+                        <label>Number of Children</label><br>
+                        <input type="text" id="children_number" class="form-control" placeholder="Number Of Children" title="Children Number" onkeyup="showChildrenAges()" required>
+                    </div>
+                    <div id="ChildrenAges"> </div>
+                    <div>
+                        <label>Employee type</label><br>
+                        <select class="form-control" id="type" onclick="contractEnd()" required>
+                            <option value="Perm_Admin">Permanent Administrative Employee</option>
+                            <option value="Temp_Admin">Temporary Administrative Employee</option>
+                            <option value="Perm_Edu">Permanent Educative Employee</option>
+                            <option value="Temp_Edu">Temporary Educative Employee</option>
+                        </select>
+                    </div>
+                    <div id="End"></div>
+                    <div id="Income"> </div>
+
+                    <br>
+                    <input type="button" id="submit_button" class="btn btn-primary" value="Submit" onclick='addEmployee()'>
+                    <div class="infoBox" id="AddNewMessage">
+                    </div>
+                </div>
+
+                <div id="promotion" style="display:none">
+                    <label>Type the ID of the employee you want to promote.</label><br>
+                    <input type="text" id="promotionID" class="form-control" placeholder="Promotion ID" title="Enter Employee ID"> <br>
+                    <input type="button" id="promote" class="btn btn-primary" value="Promote Employee" onclick='tempPromotion()'>
+                </div>
+
+                <div class="infoBox" id="promotionMessage" style="display:none"></div>
+
+                <div id="retirement" style="display:none">
+                    <label>Type the ID of the employee you want to retire/dismiss.</label><br>
+                    <input type="text" id="retirementID" class="form-control" placeholder="Retirement ID" title="Enter Employee ID"> <br>
+                    <label> Cause </label>
+                    <select class="form-control" id="retirementCause" onclick="" required>
+                        <option value="retired">Retirement</option>
+                        <option value="dismissed">Dismissal</option>
+                    </select>
+                    <input type="button" id="promote" class="btn btn-primary" value="Promote Employee" onclick='dis_ret()'>
+                </div>
+
+                <div class="infoBox" id="retirementMessage" style="display:none"></div>
+
+                <div id="getEmployee" style="display:none">
+                    <label>Type the ID of the employee you want to promote.</label><br>
+                    <input type="text" id="getEmployeeID" class="form-control" placeholder="Employee ID" title="Enter Employee ID"> <br>
+                    <input type="button" id="getEmp" class="btn btn-primary" value="Get Employee Full Details" onclick='getEmployee()'>
+                </div>
+
+                <div id="getEmployeeMessage" style="display:none"></div>
+
+                <div id="payrollPerType" style="display:none"></div>
+
+                <div class="infoBox" id="statistics" style="display:none"> </div>
+            </div>
+        </div>
+    </body>
+</html>

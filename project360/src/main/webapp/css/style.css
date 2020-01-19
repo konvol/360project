@@ -1,0 +1,116 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Dec 22, 2019, 1:49:31 PM
+    Author     : konst
+*/
+
+body{
+    text-align: left;
+    width:100%;
+    height:100%;
+    background-color: #C0C0C0;
+}
+
+table {
+    font-size: medium;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px black;
+
+}
+
+th{
+    background-color:darkcyan;
+}
+
+tr:nth-child(odd) {
+    background-color: paleturquoise;
+}
+
+tr:nth-child(even){
+    background-color:turquoise;
+}
+
+input.form-control,  select.form-control{
+    width:30%;
+}
+
+textarea.form-control{
+    width: 30%;
+}
+
+button.btn{
+    width: 95%;
+    margin:0;
+    margin-bottom: 4px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.leftCol{
+    background-color: #6495ED;
+    float: left;
+    width: 14%;
+    height: 1000px;
+    padding-left:1.5%;
+    padding-top:1%;
+
+}
+
+.rightCol {
+    background-color: #C0C0C0;
+    border-left-style:outset;
+    border:3px;
+    float: left;
+    width: 86%;
+    height: 1000px;
+    padding:10px;
+}
+
+.infoBox{
+    font-size: large;
+    font-family: Georgia, serif;
+    background-color: greenyellow;
+    border-radius: 20px;
+    border-style:outset;
+    border-color: green;
+    text-align: center;
+    width:40%;
+}
+
+.jumbotron{
+    padding:0;
+    margin:0;
+    border:0;
+
+}
+
+
+h1{
+    padding:0;
+    margin:0;
+    border:3px;
+    font-family:"Comic Sans MS", cursive, sans-serif;
+    background-color: #98FB98;
+    font-color:white;
+    border-bottom-style: outset;
+    height:100px;
+}
+
+#header{
+
+}
+
+
+
